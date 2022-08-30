@@ -10,12 +10,14 @@ int main(){
     while(infinity == 0){
         for(i = 0; i < 23; i++){
             for(j = 0; j < 23; j++){
-                System.out.print(sandpile[i][j]);
+                printf("%d", sandpile[i][j]);
                 }
-            System.out.println();
+            printf();
         }
-        System.out.println();
+        printf();
     }
+
+    return 0;
     
 }
 

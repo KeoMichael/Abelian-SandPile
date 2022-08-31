@@ -1,68 +1,66 @@
 #include <stdio.h>
 
-int main(){
+int x, y, i, j;
 
-    int infinity = 0;
-    int i, j;
+int topple(int sandpile[7][7], int x, int y, int i, int j){
 
-
-    //Creation of sandpile
-    int sandpile[5][5];
-
-    for(i = 0; i < 5; i++){
-        for(j = 0; j < 5; j++){
-            sandpile[i][j] = 0;
-        }
-    }
-
-
-    //Printing sandpile
-    while(infinity < 1){
-
-        for(i = 0; i < 5; i++){
-            for(j = 0; j < 5; j++){
-                printf("%d", sandpile[i][j]);
+        for(x = 0; x < 7; x++){
+            for(y = 0; y < 7; y++){
+                printf("%d", sandpile[x][y]);
             }
             printf("\n");
         }
         printf("_______________________\n\n");
 
         //Adding sand to the pile
-        sandpile[2][2]++;
+        sandpile[3][3]++;
 
-        if(sandpile[2][2] > 9){
 
+        if(sandpile[3][3] > 8){
             //Loop to check all areas of sand
-            for(i = 0; i < 5; i++){
-                for(j = 0; j < 5; j++){
+            for(x = 0; x < 7; x++){
+                for(y = 0; y < 7; y++){
 
-                    //sandpile[i][j] = 4;
-
-                    //Disperses towers of sand
-                    if(sandpile[i][j] > 9){
+                    //toppling towers of sand
+                    if(sandpile[x][y] > 8){
+                        
                         for(i = -1; i < 2; i++){
                             for(j = -1; j < 2; j++){
-                                if(sandpile[2+i][2+j] < 10){
-                                    sandpile[2+i][2+j]++;
+                                if(sandpile[x+i][y+j] < 8){
+                                    sandpile[x+i][y+j]++;
                                 }
                                 else{
-                                    sandpile[2+i][2+j] = 0;
+                                    sandpile[x+i][y+j] = 0;
                                 }
                             }
                         }
                     }
 
 
+                }
             }
         }
 
-            sandpile[2][2] = 0;
+    return topple(int sandpile[7][7], int x, int y, int i, int j);
+
+}
+
+int main(){
+
+    //Creation of sandpile
+    int sandpile[7][7];
+
+    for(x = 0; x < 7; x++){
+        for(y = 0; y < 7; y++){
+            sandpile[x][y] = 0;
         }
-
-
-        infinity++;
     }
+
+    topple(sandpile, x, y, i, j);
+    
 
     return 0;
     
 }
+
+
